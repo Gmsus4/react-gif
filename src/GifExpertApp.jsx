@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { AddCategory } from './components/AddCategory';
+import { GifGrid } from './components/GifGrid';
 
 export const GifExpertApp = () => {
     const [categories, setCategories] = useState([ 'One punch', 'League of Legends' ]);
@@ -14,10 +15,12 @@ export const GifExpertApp = () => {
             <h1>GifExpert App</h1>
             <AddCategory onNewCategory={(value) => onAddCategory(value)}/>
 
-            {/* <button onClick={onAddCategory}> Agregar</button> */}
-            <ol>
-                { categories.map(category => <li>{category}</li>) }
-            </ol>
+            { categories.map((category) => ( //El category es la iteración, es un elemento iterado de categories
+                <GifGrid 
+                    key={category}
+                    category={category}    
+                />)) 
+            }
         </>
     )
 }
